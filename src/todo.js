@@ -10,6 +10,7 @@ class Todo extends Component {
     }
     this.onChangeHandler=this.onChangeHandler.bind(this)
     this.addData=this.addData.bind(this)
+    this.delete=this.delete.bind(this)
   
   }
   
@@ -34,9 +35,18 @@ class Todo extends Component {
     })
     console.log(this.state.todoItems)
   }
+
+  delete(){
+    var id = event.target.id;
+    var itemInstance = this.state.todoItems;
+    itemInstance.splice(id,1);
+    this.setState({
+      todoItems:itemInstance  
+    })
+  }
   render() {
     var itemList = this.state.todoItems.map((e,i)=>
-     <li key={i}>{e}</li>)
+     <li key={i}>{e} <span onClick={this.delete} id={i}>-</span></li>)
     return (
     <div>
     <div className="header"> React js ToDo App</div>
@@ -45,8 +55,7 @@ class Todo extends Component {
         <ul>
           {itemList}
           </ul>
-
-    </div>
+          </div>
     <div className="box">
         <input type="text" 
           value={this.state.item}  
