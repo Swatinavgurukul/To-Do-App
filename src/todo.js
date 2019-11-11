@@ -35,7 +35,7 @@ class Todo extends Component {
     })
     console.log(this.state.todoItems)
   }
-
+// function for Removing items
   delete(){
     var id = event.target.id;
     var itemInstance = this.state.todoItems;
