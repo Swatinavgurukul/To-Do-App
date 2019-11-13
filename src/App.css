@@ -1,3 +1,48 @@
 .App {
   text-align: center;
 }
+
+.header{ 
+  background: hsl(337, 86%, 52%);
+  color: #f0f8ff;
+  font-size: 500;
+  padding: 15px;
+}
+.footer{
+  position: fixed;
+  bottom: 0;
+  padding: 15px;
+  background: hsl(337, 86%, 52%) ;
+  width:100%;
+}
+.footer input{
+  width: 90%;
+  color: rgb(13, 14, 15);
+  font-size: 13px;
+  height: 25px;
+  border: 0;
+  
+}
+.footer button{
+  color: #fff;
+  position: absolute;
+  top:18px;
+  right: 7%;
+  border-radius: 530%;
+  background:hsl(101, 90%, 50%);
+  
+} 
+.body ul{
+  margin: 0;
+  padding: 15px;
+}
+.body ul li{
+  background: rgb(158, 161, 161);
+  margin-bottom: 10px;
+  padding: 10px;
+  list-style: none;
+}
+.body ul li span{
+  cursor: pointer;
+  float: right;
+}

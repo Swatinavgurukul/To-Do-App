@@ -46,7 +46,7 @@ class Todo extends Component {
   }
   render() {
     var itemList = this.state.todoItems.map((e,i)=>
-     <li key={i}>{e} <span onClick={this.delete} id={i}>-</span></li>)
+     <li key={i}>{e} <span onClick={this.delete} id={i}>--</span></li>)
     return (
     <div>
     <div className="header"> React js ToDo App</div>
@@ -56,12 +56,12 @@ class Todo extends Component {
           {itemList}
           </ul>
           </div>
-    <div className="box">
+    <div className="footer">
         <input type="text" 
           value={this.state.item}  
           onChange={this.onChangeHandler}/>
           {/* <p>{this.state.item}</p> */}
-        <button onClick={this.addData}>Add</button>
+        <button onClick={this.addData}>+</button>
     </div>
     </div>
     );
