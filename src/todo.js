@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
 import './App.css';
+import Item from './item';
 
 class Todo extends Component {
   constructor(props){
     super(props)
     this.state={
       item:'',
-      todoItems : []
+      todoItems : [],
+      isInEditMode:false
     }
     this.onChangeHandler=this.onChangeHandler.bind(this)
     this.addData=this.addData.bind(this)
     this.delete=this.delete.bind(this)
+    
   
+  }
+
+  update(i, v) {
+    const list = this.state.todoItems;
+    list[i] = v;
+    this.setState({todoItems: list});
   }
   
   onChangeHandler(event){
-    this.props
-    // console.log(event);
     var inputVar = event.target.value;
-    // console.log(inputVar);
     this.setState({
       item:inputVar
     })
   }
+ 
   addData(){
     var inputVar = this.state.item;
     // console.log(inputVar)
@@ -35,26 +42,34 @@ class Todo extends Component {
     })
     console.log(this.state.todoItems)
   }
-// function for Removing items
-  delete(){
-    var id = event.target.id;
+
+  
+
+
+
+  delete(id) {
     var itemInstance = this.state.todoItems;
     itemInstance.splice(id,1);
     this.setState({
       todoItems:itemInstance  
-    })
+    });
   }
+
   render() {
-    var itemList = this.state.todoItems.map((e,i)=>
-     <li key={i}>{e} <span onClick={this.delete} id={i}>--</span></li>)
+    // var itemList = this.state.todoItems.map((e,i)=>
+    //  <li key={i}><div onDoubleClick={() => this.editMode(i)}>
+    //    {e} <span onClick={this.delete} id={i}>--</span></div>
+    // </li>)
     return (
-    <div>
+    <div> 
     <div className="header"> React js ToDo App</div>
     <div className="body">
       
         <ul>
-          {itemList}
-          </ul>
+          {this.state.todoItems.map((e, i) => <Item key={i} text={e} onDelete={() => this.delete(i)} onUpdate={(v) => this.update(i, v)} />)}
+        </ul>
+        
+
           </div>
     <div className="footer">
         <input type="text" 

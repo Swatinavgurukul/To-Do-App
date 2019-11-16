@@ -27,7 +27,7 @@
   color: #fff;
   position: absolute;
   top:18px;
-  right: 7%;
+  right: 9%;
   border-radius: 530%;
   background:hsl(101, 90%, 50%);
   
@@ -44,5 +44,10 @@
 }
 .body ul li span{
   cursor: pointer;
-  float: right;
+  right:7%;
+  color: #fff;
+  width:5%;
+  position: absolute;
+  border-radius: 830%;
+  background:hsl(101, 90%, 50%)
 }
