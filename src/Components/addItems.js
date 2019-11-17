@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import './App.css';
-import Item from './updateItem';
+// import './App.css';
 
-class Todo extends Component {
+class AddTodo extends Component {
   constructor(props){
     super(props)
     this.state={
@@ -12,18 +11,9 @@ class Todo extends Component {
     }
     this.onChangeHandler=this.onChangeHandler.bind(this)
     this.addData=this.addData.bind(this)
-    this.delete=this.delete.bind(this)
-    
-  
-  }
 
-  update(i, v) {
-    const list = this.state.todoItems;
-    list[i] = v;
-    this.setState({todoItems: list});
   }
-  
-  onChangeHandler(event){
+onChangeHandler(event){
     var inputVar = event.target.value;
     this.setState({
       item:inputVar
@@ -40,37 +30,27 @@ class Todo extends Component {
     this.setState({
       todoItems:itemInstance  
     })
-    console.log(this.state.todoItems)
-  }
-delete(id) {
-    var itemInstance = this.state.todoItems;
-    itemInstance.splice(id,1);
-    this.setState({
-      todoItems:itemInstance  
-    });
+    // console.log(this.state.todoItems)
   }
 
+  
+
   render() {
+    var itemList = this.state.todoItems.map((e,i)=>
+    <li key={i}>{e}</li>)
 
     return (
     <div> 
     <div className="header"> React js ToDo App</div>
     <div className="body">
-      
-        <ul>
-          {this.state.todoItems.map((e, i) => 
-          <Item key={i} text={e} 
-          onDelete={() => this.delete(i)} 
-          onUpdate={(v) => this.update(i, v)} />)}
-        </ul>
-        
-
-          </div>
+    <ul>
+        {itemList}
+    </ul>
+    </div>
     <div className="footer">
         <input type="text" 
           value={this.state.item}  
           onChange={this.onChangeHandler}/>
-          {/* <p>{this.state.item}</p> */}
         <button onClick={this.addData}>+</button>
     </div>
     </div>
@@ -78,4 +58,4 @@ delete(id) {
   }
 }
 
-export default Todo;
+export default AddTodo;

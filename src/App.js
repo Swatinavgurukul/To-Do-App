@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
-import Todo from './todo'
-
+import AddTodo from './Components/addItems'
+// import UpdateTodo from './updateItem'
+// import DeletTodo from './Components/deletItem'
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Todo/>
+        <AddTodo/>
+        {/* <UpdateTodo/> */}
+        {/* <DeletTodo /> */}
       </div>
         
     );
