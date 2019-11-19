@@ -11,12 +11,31 @@ class Todo extends Component {
      
     }
     this.onChangeHandler=this.onChangeHandler.bind(this)
-    this.addData=this.addData.bind(this)
     this.delete=this.delete.bind(this)
-    
+    this.submitMessage = this.submitMessage.bind(this);
+    this.keyPressed = this.keyPressed.bind(this);
+  }
+  keyPressed(event) {
+    if (event.key === "Enter") {
+      this.submitMessage()
+    }
+  }
+  submitMessage() {
+    var inputVar = this.state.item;
+    if (inputVar.trim().length !== 0){
+      var itemInstance = this.state.todoItems;
+      // console.log(itemInstance)
+      itemInstance.push(inputVar);
+      // console.log(itemInstance)
+      this.setState({
+        todoItems:itemInstance,
+        item: '',
+      })
+    }else{
+      alert('Please set your TODO.')
+    }
   
   }
-
   update(i, v) {
     const list = this.state.todoItems;
     list[i] = v;
@@ -30,18 +49,6 @@ class Todo extends Component {
     })
   }
  
-  addData(){
-    var inputVar = this.state.item;
-    // console.log(inputVar)
-    var itemInstance = this.state.todoItems;
-    // console.log(itemInstance)
-    itemInstance.push(inputVar);
-    // console.log(itemInstance)
-    this.setState({
-      todoItems:itemInstance  
-    })
-    console.log(this.state.todoItems)
-  }
 delete(id) {
     var itemInstance = this.state.todoItems;
     itemInstance.splice(id,1);
@@ -50,13 +57,19 @@ delete(id) {
     });
   }
 
+
   render() {
 
     return (
     <div> 
     <div className="header"> React js ToDo App</div>
     <div className="body">
-      
+    <input  
+          onChange={this.onChangeHandler}
+          onKeyPress={this.keyPressed}
+          value={this.state.item} 
+          />
+          <button onClick={this.submitMessage}>Add message</button>
         <ul>
           {this.state.todoItems.map((e, i) => 
           <Item key={i} text={e} 
@@ -64,14 +77,10 @@ delete(id) {
           onUpdate={(v) => this.update(i, v)} />)}
         </ul>
         
-
-          </div>
+        
+    </div>
     <div className="footer">
-        <input type="text" 
-          value={this.state.item}  
-          onChange={this.onChangeHandler}/>
-          {/* <p>{this.state.item}</p> */}
-        <button onClick={this.addData}>+</button>
+        <h3>ToDo - App made by Swati Singh </h3>
     </div>
     </div>
     );

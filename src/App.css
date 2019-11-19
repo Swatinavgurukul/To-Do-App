@@ -11,22 +11,24 @@
 .footer{
   position: fixed;
   bottom: 0;
-  padding: 15px;
+  padding: 2px;
   background: hsl(337, 86%, 52%) ;
   width:100%;
 }
-.footer input{
+.body input{
+  margin: 10px;
+  background-color: blue;
   width: 90%;
   color: rgb(13, 14, 15);
   font-size: 13px;
   height: 25px;
-  border: 0;
+  border: 2;
   
 }
-.footer button{
+.body button{
   color: #fff;
   position: absolute;
-  top:18px;
+  top:62px;
   right: 9%;
   border-radius: 530%;
   background:hsl(101, 90%, 50%);
