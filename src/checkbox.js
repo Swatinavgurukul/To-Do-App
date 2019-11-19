@@ -1,6 +1,5 @@
 import React from 'react';
 import './index.css';
-// added checkbox to check todo is pending or done
 const Checkbox = props => (
     <input type="checkbox" {...props} />
   )
@@ -33,3 +32,5 @@ class CheckBoxTodo extends React.Component {
   }
 
   export default CheckBoxTodo;
+
+  // added checkbox to check todo is pending or done
