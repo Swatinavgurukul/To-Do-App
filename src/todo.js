@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Item from './updateItem';
-
+import CheckBoxTodo from './checkbox';
 class Todo extends Component {
   constructor(props){
     super(props)
@@ -71,10 +71,9 @@ delete(id) {
           />
           <button onClick={this.submitMessage}>Add message</button>
         <ul>
-          {this.state.todoItems.map((e, i) => 
-          <Item key={i} text={e} 
+          {this.state.todoItems.map((e, i) => <Item  key={i} text={e} 
           onDelete={() => this.delete(i)} 
-          onUpdate={(v) => this.update(i, v)} />)}
+          onUpdate={(v) => this.update(i, v)} chekBox = {<CheckBoxTodo/>}/>)}
         </ul>
         
         

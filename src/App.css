@@ -17,7 +17,7 @@
 }
 .body input{
   margin: 10px;
-  background-color: blue;
+  background-color: rgb(251, 255, 0);
   width: 90%;
   color: rgb(13, 14, 15);
   font-size: 13px;
@@ -52,4 +52,7 @@
   position: absolute;
   border-radius: 830%;
   background:hsl(101, 90%, 50%)
+}
+.chackbox p{
+left:7%;
 }

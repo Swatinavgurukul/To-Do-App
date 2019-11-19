@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+
 class UpdateTodo extends Component {
     constructor(props) {
         super(props);
@@ -23,10 +24,9 @@ class UpdateTodo extends Component {
         return (<li>
             <div onDoubleClick={() => this.setState({editing: true})}>
             
-                {this.state.editing &&  <input defaultValue={this.props.text} 
-                
+                {this.state.editing &&  <input defaultValue={this.props.text}  
                  onKeyDown={e => this.keyDown(e)}/>}
-                
+                 {this.props.chekBox}
                 {!this.state.editing && this.props.text}
 
                 <span onClick={this.props.onDelete}>Delete</span>
