@@ -56,13 +56,28 @@ delete(id) {
       todoItems:itemInstance  
     });
   }
+// ---------------------------------------------------------
 
+// allTodo(){
+//   this.submitMessage()
+// }
+// doneTodo(){
 
+// }
+// pendingTodo(){
+
+// }
+// ---------------------------------------------------------
   render() {
 
     return (
     <div> 
-    <div className="header"> React js ToDo App</div>
+    <div className="header">
+      <p>React js ToDo App</p>
+      <button onClick={this.doneTodo}>Done</button>
+      <button onClick={this.pendingTodo}>Pending</button>
+      <button onClick={this.allTodo}>All-ToDo</button>
+    </div>
     <div className="body">
     <input  
           onChange={this.onChangeHandler}
