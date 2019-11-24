@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
 import './App.css';
 import Item from './updateItem';
-import CheckBoxTodo from './checkbox';
 class Todo extends Component {
   constructor(props){
     super(props)
     this.state={
       item:'',
       todoItems : [],
-     
+      showPending: true,
+      showDone: true
     }
     this.onChangeHandler=this.onChangeHandler.bind(this)
     this.delete=this.delete.bind(this)
     this.submitMessage = this.submitMessage.bind(this);
     this.keyPressed = this.keyPressed.bind(this);
+    this.totalItem = this.totalItem.bind(this);
+    this.pendingItem = this.pendingItem.bind(this);
+    this.doneItem = this.doneItem.bind(this);
   }
   keyPressed(event) {
     if (event.key === "Enter") {
@@ -56,39 +59,59 @@ delete(id) {
       todoItems:itemInstance  
     });
   }
-// ---------------------------------------------------------
+totalItem(){
 
-// allTodo(){
-//   this.submitMessage()
-// }
-// doneTodo(){
+  this.setState({
+    showPending:true,
+    showDone:true
 
-// }
-// pendingTodo(){
+  });
+}
+pendingItem(){
+  this.setState({
+    showPending:true,
+    showDone:false
 
-// }
-// ---------------------------------------------------------
+  });
+}
+
+doneItem(){
+  this.setState({
+    showPending:false,
+    showDone:true
+
+  });
+}
+
   render() {
 
     return (
     <div> 
     <div className="header">
+
       <p>React js ToDo App</p>
-      <button onClick={this.doneTodo}>Done</button>
-      <button onClick={this.pendingTodo}>Pending</button>
-      <button onClick={this.allTodo}>All-ToDo</button>
+      <div className="btn" >
+
+      <button className="headerButton" onClick={this.totalItem}>All-ToDo</button>
+      <button className="headerButton" onClick={this.pendingItem}>Pending</button>
+      <button className="headerButton" onClick={this.doneItem}>done</button>
+      </div>
     </div>
     <div className="body">
-    <input  
+    <input type="text" value="Inter your Td-Do" 
           onChange={this.onChangeHandler}
           onKeyPress={this.keyPressed}
           value={this.state.item} 
           />
-          <button onClick={this.submitMessage}>Add message</button>
+          <button onClick={this.submitMessage}>+</button>
         <ul>
-          {this.state.todoItems.map((e, i) => <Item  key={i} text={e} 
+          {this.state.todoItems.map((e, i) => <Item key={i} text={e} 
           onDelete={() => this.delete(i)} 
-          onUpdate={(v) => this.update(i, v)} chekBox = {<CheckBoxTodo/>}/>)}
+          onUpdate={(v) => this.update(i, v)}
+          showPending={this.state.showPending}
+          showDone={this.state.showDone}
+          />)}
+          
         </ul>
         
         

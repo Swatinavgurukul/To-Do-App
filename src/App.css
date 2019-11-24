@@ -1,36 +1,41 @@
+
 .App {
   text-align: center;
+  
 }
 
 .header{ 
   background: hsl(337, 86%, 52%);
   color: #f0f8ff;
   font-size: 500;
-  padding: 15px;
+  padding: 8px;
+}
+.btn {
+  margin-left:65%;
+  margin-top:-3%;
 }
 .footer{
   position: fixed;
   bottom: 0;
-  padding: 2px;
   background: hsl(337, 86%, 52%) ;
   width:100%;
 }
 .body input{
-  margin: 10px;
-  background-color: rgb(251, 255, 0);
-  width: 90%;
-  color: rgb(13, 14, 15);
-  font-size: 13px;
-  height: 25px;
-  border: 2;
+  border: none;
+  margin-top: 2%;
+  margin-left: 1%;
   
+  padding: 9px;
+  width: 70%;
+  font-size: 13px;
+  background-color: rgba(94, 88, 88, 0.1);
+  color: rgb(8, 7, 8);
 }
 .body button{
-  color: #fff;
+  color: rgb(241, 8, 8);
   position: absolute;
-  top:62px;
-  right: 9%;
-  border-radius: 530%;
+  top:12%;
+  right: 15%;
   background:hsl(101, 90%, 50%);
   
 } 
@@ -39,20 +44,29 @@
   padding: 15px;
 }
 .body ul li{
-  background: rgb(158, 161, 161);
-  margin-bottom: 10px;
+  background-color: mistyrose;
   padding: 10px;
+  margin: 4px; 
+  font-size: 90%;
+  border-radius: 8px;
   list-style: none;
 }
 .body ul li span{
   cursor: pointer;
-  right:7%;
-  color: #fff;
-  width:5%;
+  right:5%;
+  color: rgb(241, 236, 236);
+  width:3%;
   position: absolute;
   border-radius: 830%;
-  background:hsl(101, 90%, 50%)
+  background:blue;
 }
-.chackbox p{
-left:7%;
+
+.chackbox{
+  margin-right: 91%;
+  margin-top: 1.5%;
 }
+.msg{
+  margin-right: 2%;
+
+}
+

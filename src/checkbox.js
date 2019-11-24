@@ -3,46 +3,28 @@ import './index.css';
 const Checkbox = props => (
     <input type="checkbox" {...props} />
   )
-  console.log(Checkbox,"222222222222222222222222")
+  console.log(Checkbox)
 class CheckBoxTodo extends React.Component {
-    state = { checked: false }
     handleCheckboxChange = event =>
-      this.setState({ checked: event.target.checked })
-    //   allTodo(){
-    //     this.submitMessage()
-    //   }
-    //   doneTodo(){
-        
-    //   }
-    //   pendingTodo(){
-      
-    //   }  
+      this.props.onCheck(event.target.checked);
     render() {
-            // var done=[];
-            // var pending=[];
             var msg;
-            if (this.state.checked) {
-              msg = "done";
-              const list = this.state.todoItems;
+            if (this.props.checked) {
+              msg = "done"; 
             } else {
               msg = "pending";
-
             }
       return (
         <div className="chackbox">
-         
+         <p className="msg">todo is {msg}.</p>
             <Checkbox
-              checked={this.state.checked}
+            checked={this.props.checked}
               onChange={this.handleCheckboxChange}
-    />
-    <p>todo is {msg}.</p>
-           
-         
-        </div>    
-      ) 
+    /> 
+     </div> 
+        ) 
     }
   }
 
   export default CheckBoxTodo;
 
-  // added checkbox to check todo is pending or done
