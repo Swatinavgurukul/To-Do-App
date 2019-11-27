@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Item from './updateItem';
+import Item from './Item';
+
 class Todo extends Component {
   constructor(props){
     super(props)
@@ -10,6 +11,7 @@ class Todo extends Component {
       showPending: true,
       showDone: true
     }
+
     this.onChangeHandler=this.onChangeHandler.bind(this)
     this.delete=this.delete.bind(this)
     this.submitMessage = this.submitMessage.bind(this);
@@ -18,18 +20,18 @@ class Todo extends Component {
     this.pendingItem = this.pendingItem.bind(this);
     this.doneItem = this.doneItem.bind(this);
   }
+  
   keyPressed(event) {
     if (event.key === "Enter") {
       this.submitMessage()
     }
   }
+  
   submitMessage() {
     var inputVar = this.state.item;
     if (inputVar.trim().length !== 0){
       var itemInstance = this.state.todoItems;
-      // console.log(itemInstance)
       itemInstance.push(inputVar);
-      // console.log(itemInstance)
       this.setState({
         todoItems:itemInstance,
         item: '',
@@ -37,88 +39,80 @@ class Todo extends Component {
     }else{
       alert('Please set your TODO.')
     }
-  
   }
+  
   update(i, v) {
     const list = this.state.todoItems;
     list[i] = v;
     this.setState({todoItems: list});
   }
-  
+
   onChangeHandler(event){
     var inputVar = event.target.value;
     this.setState({
       item:inputVar
     })
   }
- 
-delete(id) {
+  
+  delete(id) {
     var itemInstance = this.state.todoItems;
-    itemInstance.splice(id,1);
+    itemInstance.splice(id, 1);
     this.setState({
-      todoItems:itemInstance  
+      todoItems:itemInstance
     });
   }
-totalItem(){
 
-  this.setState({
-    showPending:true,
-    showDone:true
-
-  });
-}
-pendingItem(){
-  this.setState({
-    showPending:true,
-    showDone:false
-
-  });
-}
-
-doneItem(){
-  this.setState({
-    showPending:false,
-    showDone:true
-
-  });
-}
-
+  totalItem() {
+    this.setState({
+      showPending: true,
+      showDone: true
+    });
+  }
+  
+  pendingItem(){
+    this.setState({
+      showPending:true,
+      showDone:false
+    });
+  }
+  
+  doneItem(){
+    this.setState({
+      showPending:false,
+      showDone:true
+    });
+  }
+  
   render() {
-
     return (
     <div> 
-    <div className="header">
-
-      <p>React js ToDo App</p>
-      <div className="btn" >
-
-      <button className="headerButton" onClick={this.totalItem}>All-ToDo</button>
-      <button className="headerButton" onClick={this.pendingItem}>Pending</button>
-      <button className="headerButton" onClick={this.doneItem}>done</button>
+      <div className="header">
+        <p>React js ToDo App</p>
+        <div className="btn" >
+          <button className="headerButton" onClick={this.totalItem}> All-ToDo </button>
+          <button className="headerButton" onClick={this.pendingItem}> Pending </button>
+          <button className="headerButton" onClick={this.doneItem}> done </button>
+        </div>
       </div>
-    </div>
-    <div className="body">
-    <input type="text" value="Inter your Td-Do" 
+      <div className="body">
+        <input type="text" value="Inter your Td-Do"
           onChange={this.onChangeHandler}
           onKeyPress={this.keyPressed}
           value={this.state.item} 
-          />
-          <button onClick={this.submitMessage}>+</button>
+        />
+        <button onClick={this.submitMessage}> + </button>
         <ul>
-          {this.state.todoItems.map((e, i) => <Item key={i} text={e} 
-          onDelete={() => this.delete(i)} 
-          onUpdate={(v) => this.update(i, v)}
-          showPending={this.state.showPending}
-          showDone={this.state.showDone}
-          />)}
-          
+          {this.state.todoItems.map((e, i) => <Item key={i} text={e}
+            onDelete={() => this.delete(i)}
+            onUpdate={(v) => this.update(i, v)}
+            showPending={this.state.showPending}
+            showDone={this.state.showDone}
+            />)}
         </ul>
-        
-        
-    </div>
-    <div className="footer">
+      </div>
+      <div className="footer">
         <h3>ToDo - App made by Swati Singh </h3>
-    </div>
+      </div>
     </div>
     );
   }
